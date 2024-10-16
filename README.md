@@ -446,5 +446,6 @@ clean:
 ## CONCLUSION _____ [ 4 ]
 We also provided a sample Makefile following this guide.
 
-For uploading to STM32MCU, you can use an ST-Link device, with STM32CubeProgrammer, or ST-Link Utilities software.#   S T M 3 2 - M a k e f i l e - G u i d a n c e  
+For uploading to STM32MCU, you can use an ST-Link device, with STM32CubeProgrammer, or ST-Link Utilities software.#   S T M 3 2 - M a k e f i l e - G u i d a n c e 
+ 
  
