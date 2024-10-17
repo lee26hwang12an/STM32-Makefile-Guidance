@@ -1,4 +1,5 @@
 # COMPILING AND BUILDING C++ PROJECTS FOR STM32 USING MAKEFILE AND VSCODE
+
 *written by Darstellar - October 2024*
 
 #
