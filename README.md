@@ -3,7 +3,7 @@
 *written by Darstellar - October 2024*
 
 **[SECTION 1: THE PREREQUISITES](#section-1-the-prerequisites)**\
-| [List of prerequisites](#list-of-prerequisites)\
+| [What are required?](#list-of-prerequisites)\
 | [Prerequisites checking](#checking-for-availability-of-prerequisites)\
 | [Installing prerequisites (If not already)](#getting-and-installing-prerequisites)\
 <> [GCC/G++](#installing-gccg)\
@@ -30,6 +30,7 @@
 *If one already has all items in the following list ready and verified, one may proceed to section [ 2 ].*
 
 ### LIST OF PREREQUISITES:
+0. ***ABILITY TO READ***.
 1. GCC/G++ for C/C++: ***gcc*** and/or ***g++***.
 2. GCC/G++ for ARM: ***arm-none-eabi-gcc*** and/or ***arm-none-eabi-g++***.
 3. Make.
