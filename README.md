@@ -3,7 +3,7 @@
 *written by Darstellar - October 2024*
 
 [Section 1: The Prerequisites](#first,-the-prerequisites-_____-[-1-]) \
-[Section 2: Code Generation](#-generating-code-with-stm32cubemx-_____-[-2-])
+[Section 2: Code Generation](#generating-code-with-stm32cubemx-2)
 
 #
 ## FIRST, THE PREREQUISITES _____ [ 1 ]
