@@ -2,6 +2,9 @@
 
 *written by Darstellar - October 2024*
 
+[Section 1: The Prerequisites](#first,-the-prerequisites-_____-[-1-]) \
+[Section 2: Code Generation](#-generating-code-with-stm32cubemx-_____-[-2-])
+
 #
 ## FIRST, THE PREREQUISITES _____ [ 1 ]
 ***PREREQUISITES*** are the things that are required in order for everything to operate correctly following this guide. With that said, make sure your system has every item in the following list. In the latter part, a guidance on ***VERIFYING*** and/or ***INSTALLING*** each item is going to be provided.
