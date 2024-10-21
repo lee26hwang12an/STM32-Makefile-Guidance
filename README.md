@@ -431,7 +431,89 @@ clean:
 ![VSCode Clean Check](Images/VSCode_4.png)
 
 #
-## CONCLUSION _____ [ 4 ]
+## EXTRAS _____ [ 4 ]
 We also provided a sample Makefile following this guide.
 
 For uploading to STM32MCU, you can use an ST-Link device, with STM32CubeProgrammer, or ST-Link Utilities software.#
+
+### REDIRECTING `printf()` TO SERIAL TRANSMISSION:
+Compared to the ***Serial*** library provided by Arduino, logging values to a terminal through UART with STM32 can be quite finicky, mainly due to the fact that the HAL API function `HAL_UART_TRANSMIT()` requires certain parameters such as string length in order to send. Meanwhile with Serial by on the Arduino platform, we can simply pass anything into the `Serial.println()` and the library would figure everything out itself.
+
+Luckily, we can leverage the C function `printf()` to imitate the similar behavior to that of good old Arduino. Add the following to the code:
+```cpp
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif
+
+PUTCHAR_PROTOTYPE
+{
+    // -------------- Change huart_x to your appropriate Hardware UART/USART
+    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+    return ch;
+}
+
+```
+
+Then `printf()` will work as `Serial.print()`. Example:
+```cpp
+#include "main.h"
+
+UART_HandleTypeDef huart1;
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART1_UART_Init(void);
+
+int main(void)
+{
+    HAL_Init();
+    MX_GPIO_Init();
+    MX_USART1_UART_Init();
+
+    uint32_t i = 0;
+
+    while (1)
+    {
+        printf("Hello number %d\n", i);
+    }
+}
+. . .
+```
+
+#### Modifying the Makefile for `printf()` to work with ***floating point***:
+One missing part is that floating point will not get sent when calling:
+```cpp
+while (1)
+{
+    float targetAngle = 0.00f;
+
+    printf("Target: %.2f\n", targetAngle);
+
+    targetAngle += 0.04f;
+}
+```
+We can easily address that by modifying the ***Makefile***. Specifically in the Library Dependencies section, append `-lrdimon -u _printf_float` to the end of the LIBS variable:
+```Makefile
+. . .
+
+#######################################
+# LDFLAGS
+#######################################
+# link script
+LDSCRIPT = STM32F407VETx_FLASH.ld
+
+# libraries
+LIBS = -lc -lm -lnosys -lrdimon -u _printf_float # <------------------- MODIFY THIS
+LIBDIR = 
+LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+
+# default action: build all
+all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+
+. . .
+
+```
+
+Then, `printf()` can finally display floating point numbers to your terminal.
