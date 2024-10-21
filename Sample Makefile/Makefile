@@ -52,7 +52,7 @@ Core/Src/system_stm32f4xx.c \
 Core/Src/sysmem.c \
 Core/Src/syscalls.c  
 
-# C++ sources
+# C++ sources	# -------------------------------------------------------------	Added
 CXX_SOURCES = \
 App/app.cpp \
 
