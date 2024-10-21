@@ -2,11 +2,29 @@
 
 *written by Darstellar - October 2024*
 
-[Section 1: The Prerequisites](#first,-the-prerequisites-_____-[-1-]) \
-[Section 2: Code Generation](#generating-code-with-stm32cubemx-2)
+**[SECTION 1: THE PREREQUISITES](#section-1-the-prerequisites)**\
+| [List of prerequisites](#list-of-prerequisites)\
+| [Prerequisites checking](#checking-for-availability-of-prerequisites)\
+| [Installing prerequisites (If not already)](#getting-and-installing-prerequisites)\
+<> [GCC/G++](#installing-gccg)\
+<> [ARM GCC/G++](#installing-arm-gccg-toolchain)\
+<> [Make](#installing-make)
+
+**[SECTION 2: CODE GENERATION](#section-2-generating-code-with-stm32cubemx)**
+
+**[SECTION 3: VSCODE](#section-3-working-in-visual-studio-code)**\
+| [Launching with VSCode](#launching-the-project-in-vscode)\
+| [Makefile with C++](#modifying-the-project-for-c-compilation)\
+<> [Adding C++ headers and sources](#adding-a-new-folder-with-header-and-c-source)\
+<> [Modifying the Makefile](#modifying-the-makefile)
+
+
+**[SECTION 4: EXTRAS](#section-4-extras)**\
+| [UART to `printf()`](#redirecting-printf-to-serial-transmission)\
+| [`printf()` with float](#modifying-the-makefile-for-printf-to-work-with-floating-point)
 
 #
-## FIRST, THE PREREQUISITES _____ [ 1 ]
+## SECTION 1: THE PREREQUISITES
 ***PREREQUISITES*** are the things that are required in order for everything to operate correctly following this guide. With that said, make sure your system has every item in the following list. In the latter part, a guidance on ***VERIFYING*** and/or ***INSTALLING*** each item is going to be provided.
 
 *If one already has all items in the following list ready and verified, one may proceed to section [ 2 ].*
@@ -106,7 +124,7 @@ License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
 ```
 
 #
-## GENERATING CODE WITH STM32CUBEMX _____ [ 2 ]
+## SECTION 2: GENERATING CODE WITH STM32CUBEMX
 ***STM32CubeMX*** or Cube MCU Explorer is a tool developed by ST-Electronics that is used for configuring MCUs and Devboards by ST and generate code based on user's configurations. To save a lot of time, we shall use CubeMX to first configure the basics of STM32 MCUs, the basics of our projects, then generate the dependency codes. We can then use this generated code as a project to work with in VSCode.
 
 *OMG I swear, CubeIDE is just ugly as f_ck it makes my eyes bleed every single f_cking time!*
@@ -134,7 +152,7 @@ Just choose your STM32 MCU and configure the debug, pinout, clock, and periphera
 6. Now we can generate the code with Makefile by clicking the `GENERATE CODE` button on the upper right corner.
 
 #
-## WORKING IN VISUAL STUDIO CODE _____ [ 3 ]
+## SECTION 3: WORKING IN VISUAL STUDIO CODE
 *In case you skipped the entire upper part, be sure you have the following installed:*
 - gcc/g++;
 - arm-none-eabi-gcc/g++;
@@ -434,7 +452,7 @@ clean:
 ![VSCode Clean Check](Images/VSCode_4.png)
 
 #
-## EXTRAS _____ [ 4 ]
+## SECTION 4: EXTRAS
 We also provided a sample Makefile following this guide.
 
 For uploading to STM32MCU, you can use an ST-Link device, with STM32CubeProgrammer, or ST-Link Utilities software.#
@@ -485,7 +503,7 @@ int main(void)
 . . .
 ```
 
-#### Modifying the Makefile for `printf()` to work with ***floating point***:
+### Modifying the Makefile for `printf()` to work with ***floating point***:
 One missing part is that floating point will not get sent when calling:
 ```cpp
 while (1)
