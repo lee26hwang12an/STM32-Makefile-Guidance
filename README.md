@@ -443,7 +443,7 @@ clean:
 	-del $(BUILD_DIR) # --------------------------------- MODIFY THIS
 ...
 ```
-7. Make sure your modifications to the ***Makefile*** were valid. Open a new terminal in VSCode, type `make` and hit Enter. If everything compiles without a (problem)[#attention-when-converting-from-a-prviously-c-to-c-project], a hex file, a bin file will be generated to a newly created folder `build`:
+7. Make sure your modifications to the ***Makefile*** were valid. Open a new terminal in VSCode, type `make` and hit Enter. If everything compiles without a [problem](#attention-when-converting-from-a-previously-c-to-c-project), a hex file, a bin file will be generated to a newly created folder `build`:
 
 ![VSCode Second Check](Images/VSCode_2.png)
 
