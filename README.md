@@ -443,7 +443,7 @@ clean:
 	-del $(BUILD_DIR) # --------------------------------- MODIFY THIS
 ...
 ```
-7. Make sure your modifications to the ***Makefile*** were valid. Open a new terminal in VSCode, type `make` and hit Enter. If everything compiles without a problem, a hex file, a bin file will be generated to a newly created folder `build`:
+7. Make sure your modifications to the ***Makefile*** were valid. Open a new terminal in VSCode, type `make` and hit Enter. If everything compiles without a (problem)[#attention-when-converting-from-a-prviously-c-to-c-project], a hex file, a bin file will be generated to a newly created folder `build`:
 
 ![VSCode Second Check](Images/VSCode_2.png)
 
@@ -504,7 +504,7 @@ int main(void)
 . . .
 ```
 
-### Modifying the Makefile for `printf()` to work with ***floating point***:
+### MODIFYING THE MAKEFILE FOR `printf()` TO WORK WITH ***FLOATING POINT***:
 One missing part is that floating point will not get sent when calling:
 ```cpp
 while (1)
@@ -539,3 +539,6 @@ all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET
 ```
 
 Then, `printf()` can finally display floating point numbers to your terminal.
+
+### ATTENTION WHEN CONVERTING FROM A PREVIOUSLY C TO C++ PROJECT
+If you have previously built and compiled a project with Makefile in C, often time when converting to C++ in the middle of the way, `make` would be unsuccessful with certain errors. In this case, simply clear the ***Make cache***, or ***delete*** everything in the `build` folder, then call `make` again.
