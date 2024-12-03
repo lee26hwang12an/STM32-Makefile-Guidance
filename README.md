@@ -463,6 +463,9 @@ Compared to the ***Serial*** library provided by Arduino, logging values to a te
 
 Luckily, we can leverage the C function `printf()` to imitate the similar behavior to that of good old Arduino. Add the following to the code:
 ```cpp
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
@@ -475,6 +478,10 @@ PUTCHAR_PROTOTYPE
     HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 ```
 
