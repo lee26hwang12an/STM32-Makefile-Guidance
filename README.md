@@ -83,7 +83,7 @@ C:\msys64\mingw64\bin
 8. Now your system should have GCC/G++ toolchain installed. Verify it by using the steps in the previous section: `gcc --version` and/or `g++ --version`.
 
 #### Installing ARM GCC/G++ Toolchain:
-0. If not already, install MSYS2 with this [link](https://github.com/msys2/msys2-installer/releases/download/2024-01-13/msys2-x86_64-20240113.exe).
+0. If not already, install MSYS2 with this [link](https://github.com/msys2/msys2-installer/releases/download/2024-01-13/msys2-x86_64-20240113.exe). If you followed this guide from the previous step, then MSYS is already installed.
 1. Open the MSYS2 terminal by pressing `Start` and type `MSYS`.
 2. In the newly opened terminal, type `pacman -S mingw-w64-x86_64-arm-none-eabi-toolchain` and hit Enter. Upon asked for confirmation, as below, type Y then hit Enter to proceed.
 ```
